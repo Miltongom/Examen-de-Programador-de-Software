@@ -1,0 +1,3 @@
+com\crudcliente\CRUDcliente.class
+CRUD\ClienteDAO.class
+com\crudcliente\conexionBD\DatabaseConnection.class

@@ -1,0 +1,3 @@
+com\crudtecnico\conexionBD\DatabaseConnection.class
+CRUD\TecnicoDAO.class
+com\crudtecnico\CRUDtecnico.class

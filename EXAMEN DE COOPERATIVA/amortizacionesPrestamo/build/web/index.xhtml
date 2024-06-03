@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Amortización de Préstamo</title>
+        <style>
+            /* Tipografías */
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&amp;display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&amp;display=swap');
+
+            /* Estilos generales */
+            body {
+                font-family: 'Roboto', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f5f5f5;
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            h1 {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+                color: #004d00; /* Verde de la cooperativa */
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            h2, h3 {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+                color: #004d00; /* Verde de la cooperativa */
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                color: #555;
+                margin-bottom: 10px;
+            }
+
+            /* Tabla */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid #ccc;
+            }
+
+            th {
+                background-color: #004d00; /* Verde de la cooperativa */
+                color: #ffffff;
+                font-weight: bold;
+            }
+
+            td {
+                background-color: #e0f7e0; /* Verde claro de la cooperativa */
+            }
+
+            /* Botón */
+            .btn {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #ffcc00; /* Amarillo de la cooperativa */
+                color: #004d00; /* Verde de la cooperativa */
+                text-decoration: none;
+                text-align: center;
+                border-radius: 4px;
+                transition: background-color 0.3s ease;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: bold;
+            }
+            
+            
+
+            .btn:hover {
+                background-color: #ff9900; /* Amarillo oscuro de la cooperativa */
+            }
+
+            /* Enlaces */
+            a {
+                color: #004d00; /* Verde de la cooperativa */
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h1>Amortización de Préstamo</h1>
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="monto" value="Monto: " />
+                    <h:inputText id="monto" value="#{prestamoBean.monto}" />
+
+                    <h:outputLabel for="plazo" value="Plazo (meses): " />
+                    <h:inputText id="plazo" value="#{prestamoBean.plazo}" />
+
+                    <h:outputLabel for="tasa" value="Tasa de interés mensual (%): " />
+                    <h:inputText id="tasa" value="#{prestamoBean.tasaMensual}" />
+
+                    <h:commandButton value="Calcular" action="#{prestamoBean.calcular}" styleClass="btn" />
+                    <span style="margin-right: 10px;"></span> <!-- Espacio separador -->
+                    <h:commandButton value="Limpiar" action="#{prestamoBean.reset()}" styleClass="btn" />
+                
+                </h:panelGrid>
+
+                <h:dataTable value="#{prestamoBean.amortizaciones}" var="amortizacion">
+                    <h:column>
+                        <f:facet name="header">Periodo</f:facet>
+                        #{amortizacion.periodo}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Saldo</f:facet>
+                        #{amortizacion.saldo}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Interés</f:facet>
+                        #{amortizacion.interes}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Abono</f:facet>
+                        #{amortizacion.abono}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Pago</f:facet>
+                        #{amortizacion.pago}
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </div>
+    </h:body>
+</html>

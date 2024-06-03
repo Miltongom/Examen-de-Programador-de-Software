@@ -1,0 +1,3 @@
+CRUD\EquipoDAO.class
+com\crudequipo\CRUDequipo.class
+com\crudequipo\conexionBD\DatabaseConnection.class

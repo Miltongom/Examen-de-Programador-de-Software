@@ -1,0 +1,3 @@
+com\crudmarca\conexionBD\DatabaseConnection.class
+com\crudmarca\CRUDmarca.class
+CRUD\MarcaDAO.class
